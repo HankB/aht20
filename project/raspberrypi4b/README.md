@@ -1,3 +1,9 @@
+# Publish AHT20 readings in JSON format
+
+## Status
+
+* Some superfluous code removed. Need to clone to abother host for further testing.
+
 ### 1. Board
 
 #### 1.1 Board Info
@@ -69,6 +75,8 @@ Find the compiled library in CMake.
 ```cmake
 find_package(aht20 REQUIRED)
 ```
+
+*** Note: The following information pertains to the original program. ***
 
 ### 3. AHT20
 
