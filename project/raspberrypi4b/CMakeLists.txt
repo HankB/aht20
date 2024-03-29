@@ -26,7 +26,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 # set the project name and language
-project(aht20 C)
+project(aht20-reader C)
 
 # read the version from files
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/cmake/VERSION ${CMAKE_PROJECT_NAME}_VERSION)
