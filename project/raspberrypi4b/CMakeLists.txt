@@ -44,7 +44,7 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 set(CMAKE_BUILD_TYPE Release)
 
 # set the release flags of c
-set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -Wall -DNDEBUG")
 
 # include cmake package config helpers
 include(CMakePackageConfigHelpers)

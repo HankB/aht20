@@ -90,7 +90,7 @@ MAIN := $(SRCS) \
 		$(wildcard ./src/main.c)
 
 # set flags of the compiler
-CFLAGS := -O3 \
+CFLAGS := -O3 -Wall \
 		-DNDEBUG
 
 # set all .PHONY
