@@ -52,26 +52,7 @@
  */
 uint8_t aht20(void)
 {
-    /*
-    int c;
-    int longindex = 0;
-    const char short_options[] = "hipe:t:";
-    const struct option long_options[] =
-        {
-            {"help", no_argument, NULL, 'h'},
-            {"information", no_argument, NULL, 'i'},
-            {"port", no_argument, NULL, 'p'},
-            {"example", required_argument, NULL, 'e'},
-            {"test", required_argument, NULL, 't'},
-            {"times", required_argument, NULL, 1},
-            {NULL, 0, NULL, 0},
-        };
-    char type[33] = "unknown";
-    */
-
-    uint32_t times = 3;
     uint8_t res;
-    uint32_t i;
     float temperature;
     uint8_t humidity;
 
@@ -82,11 +63,6 @@ uint8_t aht20(void)
         return 1;
     }
 
-    /* loop */
-    for (i = 0; i < times; i++)
-    {
-        /* delay 2000ms */
-        aht20_interface_delay_ms(2000);
 
         /* read data */
         res = aht20_basic_read((float *)&temperature, (uint8_t *)&humidity);
@@ -98,10 +74,9 @@ uint8_t aht20(void)
         }
 
         /* output */
-        aht20_interface_debug_print("aht20: %d/%d.\n", (uint32_t)(i + 1), (uint32_t)times);
-        aht20_interface_debug_print("aht20: temperature is %0.2fC.\n", temperature);
+        //aht20_interface_debug_print("aht20: %d/%d.\n", (uint32_t)(i + 1), (uint32_t)times);
+        aht20_interface_debug_print("aht20: temperature is %0.2fF, ", temperature/5.0*9.0+32.0);
         aht20_interface_debug_print("aht20: humidity is %d%%.\n", humidity);
-    }
 
     /* deinit */
     (void)aht20_basic_deinit();
