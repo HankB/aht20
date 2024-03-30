@@ -38,7 +38,7 @@ It is only necessary to copy the executable to a target Raspberry Pi. The AHT20 
 
 ## Errata
 
-The original binary can be build by chedcking out the `master` branch and following the same build instructions.
+The original binary can be build by checking out the `master` branch and following the same build instructions.
 
 If the code for the project is ever extracted to just what is needed for the Raspberry Pi, a link will be provided here.
 
