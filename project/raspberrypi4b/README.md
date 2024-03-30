@@ -1,8 +1,50 @@
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+
+**Clarify my (HankB) contributions vs. the original repo.**
+
+The line above indicates the start of my efforts. I will end my section similarly.
+
 # Publish AHT20 readings in JSON format
 
 ## Status
 
-* Some superfluous code removed. Need to clone to abother host for further testing.
+* Some superfluous code removed. Need to clone to another host for further testing.
+
+## Target
+
+Pi Zero/W running RpiOS.Initial development is performed on a Pi 3B running the current (Bookworm) 32 bit version of RpiOS. It is necessary to enable I2C either using `sudo raspi-config` or adding/uncommenting the following to `/boot/firmware/config.txt`
+
+```text
+dtparam=i2c_arm=on
+```
+
+## Build
+
+From the main project directory
+
+```text
+git checkout localwork
+cd project/raspberrypi4b/
+make
+mkdir -p build
+cd build
+cmake ..
+make
+```
+
+## Deploy
+
+It is only necessary to copy the executable to a target Raspberry Pi. The AHT20 libraries are statically linked.
+
+## Errata
+
+The original binary can be build by chedcking out the `master` branch and following the same build instructions.
+
+If the code for the project is ever extracted to just what is needed for the Raspberry Pi, a link will be provided here.
+
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
 ### 1. Board
 
@@ -75,8 +117,6 @@ Find the compiled library in CMake.
 ```cmake
 find_package(aht20 REQUIRED)
 ```
-
-*** Note: The following information pertains to the original program. ***
 
 ### 3. AHT20
 
