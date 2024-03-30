@@ -41,50 +41,6 @@
 #include <stdlib.h>
 
 /**
- * @brief     aht20 full function
- * @param[in] argc is arg numbers
- * @param[in] **argv is the arg address
- * @return    status code
- *            - 0 success
- *            - 1 run failed
- *            - 5 param is invalid
- * @note      none
- */
-uint8_t aht20(void)
-{
-    uint8_t res;
-    float temperature;
-    uint8_t humidity;
-
-    /* basic init */
-    res = aht20_basic_init();
-    if (res != 0)
-    {
-        return 1;
-    }
-
-
-        /* read data */
-        res = aht20_basic_read((float *)&temperature, (uint8_t *)&humidity);
-        if (res != 0)
-        {
-            (void)aht20_basic_deinit();
-
-            return 1;
-        }
-
-        /* output */
-        //aht20_interface_debug_print("aht20: %d/%d.\n", (uint32_t)(i + 1), (uint32_t)times);
-        aht20_interface_debug_print("aht20: temperature is %0.2fF, ", temperature/5.0*9.0+32.0);
-        aht20_interface_debug_print("aht20: humidity is %d%%.\n", humidity);
-
-    /* deinit */
-    (void)aht20_basic_deinit();
-
-    return 0;
-}
-
-/**
  * @brief     main function
  * @param[in] argc is arg numbers
  * @param[in] **argv is the arg address
@@ -95,24 +51,29 @@ uint8_t aht20(void)
 int main(uint8_t argc, char **argv)
 {
     uint8_t res;
+    float temperature;
+    uint8_t humidity;
 
-    res = aht20();
-    if (res == 0)
+    /* init device */
+    res = aht20_basic_init();
+    if (res != 0)
     {
-        /* run success */
+        return 1;
     }
-    else if (res == 1)
+
+    /* read data */
+    res = aht20_basic_read((float *)&temperature, (uint8_t *)&humidity);
+    if (res != 0)
     {
-        aht20_interface_debug_print("aht20: run failed.\n");
+        (void)aht20_basic_deinit();
+
+        return 1;
     }
-    else if (res == 5)
-    {
-        aht20_interface_debug_print("aht20: param is invalid.\n");
-    }
-    else
-    {
-        aht20_interface_debug_print("aht20: unknown status code.\n");
-    }
+
+    /* deinit */
+    (void)aht20_basic_deinit();
+
+    printf("%f %d\n", temperature*9.0/5.0+32.0, humidity);
 
     return 0;
 }

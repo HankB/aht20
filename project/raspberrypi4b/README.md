@@ -6,9 +6,18 @@ The line above indicates the start of my efforts. I will end my section similarl
 
 # Publish AHT20 readings in JSON format
 
+Read AHT20 sensor using a Raspberry Pi, probably a Zero/W. Publish in a format suitable for my HomeAssistant setup. Typical output would look like
+
+```text
+ {"t": 1711595102, "temp": 71.0, "humid": 36.4, "device":"AHT20"}
+```
+
+Where `t` is the seconds since the start of the epoch, `temp` is temperature in °F and `humid` is relative humidity in %. `device` identifies the device used. There may be additional fields for debugging information and yes, this is JSON. It will be wriotten to STDOUT and in operation, piped ti `mosquitto_pub` which will add a suitable topic and publish to a designated MQTT broker.
+
 ## Status
 
-* Some superfluous code removed. Need to clone to another host for further testing.
+* Some superfluous code removed.
+* Output °F, %RH in unadorned text format.
 
 ## Target
 
