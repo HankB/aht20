@@ -39,6 +39,7 @@
 #include <math.h>
 #include <getopt.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
  * @brief     main function
@@ -73,7 +74,8 @@ int main(uint8_t argc, char **argv)
     /* deinit */
     (void)aht20_basic_deinit();
 
-    printf("%f %d\n", temperature*9.0/5.0+32.0, humidity);
+    printf("{\"t\": %ld, \"temp\": %.2f, \"humid\": %d, \"device\": \"AHT20\"}", \
+        time(0L), temperature*9.0/5.0+32.0, humidity);
 
     return 0;
 }
