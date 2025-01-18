@@ -1,4 +1,6 @@
-## Local work by HankB will proceed in the branch `localwork` See files in `project/raspberrypi4b` for work specific to meet my needs. Though the original targert was a Pi 4B, it seems to work w/out difficulty on a 32 bit Pi Zer0.
+## Local work by HankB will proceed in the branch `localwork`
+
+See files in `project/raspberrypi4b` for work specific to meet my needs. Though the original targert was a Pi 4B, it seems to work w/out difficulty on a 32 bit Pi Zer0.
 
 ############################################## original project follows.
 
